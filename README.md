@@ -143,16 +143,16 @@ Each row corresponds to each gene.
 .
 ```
 
-##### Format of Output_file1
+##### Format of Output_file
 The Output_file is the (G+1) x 101 matrix of reconstructed expression dynamics (separated with 'TAB').
 The first column corresponds to time parameter (from 0.0 to 1.0 with 0.01 interval).
 Each row corresponds to each gene, and each column corresponds to each time point.
 
-##### Example of Output_file1
+##### Example of Output_file
 ```
 0	0.01	0.02	...
-0.0 	0.19	0.0	...
-0.0 	0.19	0.0	...
+1.253	1.241	1.233	...
+1.266 	1.053	0.937	...
 .
 .
 ```
