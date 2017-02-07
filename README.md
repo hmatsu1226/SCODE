@@ -157,6 +157,22 @@ Each row corresponds to each gene, and each column corresponds to each time poin
 .
 ```
 
+# Dataset
+We validated SCODE with three time couse scRNA-Seq data.
+We extracted top 100 variable TFs.
+
+## data
+scRNA-Seq data derived from PrE cells differentiated from mES cells (in preparation).
+
+## data2
+scRNA-Seq data obtained to examine direct reprogramming from MEF cells to myocytes.
+Treutlein, Barbara, et al. "Dissecting direct reprogramming from fibroblast to neuron using single-cell RNA-seq." Nature (2016).
+
+## data3
+scRNA-Seq data derived from DE cells differentiated from hES cells.
+Chu, Li-Fang, et al. "Single-cell RNA-seq reveals novel regulators of human embryonic stem cell differentiation to definitive endoderm." Genome biology 17.1 (2016): 173.
+
+
 ## License
 Copyright (c) 2016 Hirotaka Matsumoto
 Released under the MIT license
