@@ -99,6 +99,24 @@ The averaged A (meanA.txt) is outputted in the Output_dir.
 
 <br>
 <br>
+
+# SCODE implemented by Julia
+## Requirements
+SCODE.jl is written with Julia(Version 0.5.0), and use DataFrames package.
+The runtimes of SCODE.jl is smaller than that of SCODE.R
+
+## Running SCODE.jl
+```
+julia SCODE.jl <Input_file1> <Input_file2> <Output_dir> <G> <D> <C> <I>
+```
+
+## Running SCODE.jl several times
+```
+ruby run_julia.rb <Input_file1> <Input_file2> <Output_dir> <G> <D> <C> <I> <R>
+```
+
+<br>
+<br>
 # Downstream analysis
 
 ## Calculation of RSS (RSS.R)
