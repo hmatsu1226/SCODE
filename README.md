@@ -86,6 +86,17 @@ G x D matrix, which corresponds to W of linear regression.
 #### RSS.txt
 The residual sum of squares of linear regression.
 
+## Running SCODE several times
+We recommend runnning SCODE several times and averaging the result (A) to obtain reliable relationships.
+```
+ruby run_R.rb <Input_file1> <Input_file2> <Output_dir> <G> <D> <C> <I> <R>
+```
+
+* R : The number of traials
+* Output_dir : Result files of each trial is outputted in the directory
+
+The averaged A (meanA.txt) is outputted in the Output_dir.
+
 <br>
 <br>
 # Downstream analysis
