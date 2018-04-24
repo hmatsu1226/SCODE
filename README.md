@@ -4,7 +4,7 @@ SCODE : an efficient regulatory network inference algorithm from single-cell RNA
 
 ## Reference
 
-In submission.
+https://academic.oup.com/bioinformatics/article/33/15/2314/3100331
 
 ## Requirements
 
