@@ -4,7 +4,7 @@ SCODE : an efficient regulatory network inference algorithm from single-cell RNA
 
 ## Reference
 
-In submission.
+https://academic.oup.com/bioinformatics/article/33/15/2314/3100331
 
 ## Requirements
 
@@ -201,6 +201,10 @@ Treutlein, Barbara, et al. "Dissecting direct reprogramming from fibroblast to n
 scRNA-Seq data derived from DE cells differentiated from hES cells.
 Chu, Li-Fang, et al. "Single-cell RNA-seq reveals novel regulators of human embryonic stem cell differentiation to definitive endoderm." Genome biology 17.1 (2016): 173.
 
+## Rererence TF-TF network
+Reference TF-TF networks are extracted from http://www.regulatorynetworks.org .
+The first column corresponds to target TF.
+The second column corresponds to regulator TF.
 
 ## License
 Copyright (c) 2016 Hirotaka Matsumoto
