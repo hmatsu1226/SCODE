@@ -1,4 +1,8 @@
+using CSV
 using DataFrames
+using LinearAlgebra
+
+println("a")
 
 fdata = ARGS[1]
 ftime = ARGS[2]
@@ -15,13 +19,14 @@ if !(isdir(dir))
     mkdir(dir)
 end
 
-X = readtable(fdata, separator='\t', header=false)[1:tfnum,1:cnum]
-X = convert(Array, X)
+#X = readtable(fdata, separator='\t', header=false)[1:tfnum,1:cnum]
+X = CSV.read(fdata, header=false)
+X = convert(Matrix, X)
 W = zeros(tfnum, pnum)
 Z = zeros(pnum, cnum)
 WZ = zeros(tfnum, cnum)
 
-pseudotime = readtable(ftime, separator='\t', header=false)[1:cnum,2]
+pseudotime = CSV.read(ftime, header=false)[1:cnum,2]
 pseudotime = pseudotime/maximum(pseudotime)
 
 new_B = zeros(pnum)
@@ -46,11 +51,11 @@ end
 for ite in 1:maxite
     #sampling B
     target = rand(1:pnum)
-    new_B[target] = rand()*(maxB-minB)+minB
+    global new_B[target] = rand()*(maxB-minB)+minB
 
     #for last calc
     if ite==maxite
-        new_B = copy(old_B)
+        global new_B = copy(old_B)
     end
 
     #sample Z from new B
@@ -68,10 +73,12 @@ for ite in 1:maxite
     for i in 1:tfnum
         tmp_RSS += sum((X[i,:]-WZ[i,:]).*(X[i,:]-WZ[i,:]))
     end
+
     if tmp_RSS < RSS
-        RSS = tmp_RSS
+        global RSS = tmp_RSS
+        global old_B[target] = new_B[target]
     else
-        new_B[target] = old_B[target]
+        global new_B[target] = old_B[target]
     end
 end
 
@@ -81,7 +88,8 @@ open(dir*"/RSS.txt", "w") do f
 end
 
 #output W
-writetable(dir*"/W.txt", convert(DataFrame, W), separator = '\t', header = false)
+#writetable(dir*"/W.txt", convert(DataFrame, W), separator = '\t', header = false)
+DataFrame(W) |> CSV.write(dir*"/W.txt", delim='\t', writeheader=false)
 
 #infer A
 B = zeros(pnum, pnum)
@@ -92,7 +100,7 @@ invW = pinv(W)
 A = W * B * invW
 
 #write A and B
-writetable(dir*"/A.txt", convert(DataFrame, A), separator = '\t', header = false)
-writetable(dir*"/B.txt", convert(DataFrame, B), separator = '\t', header = false)
-
-
+#writetable(dir*"/A.txt", convert(DataFrame, A), separator = '\t', header = false)
+#writetable(dir*"/B.txt", convert(DataFrame, B), separator = '\t', header = false)
+DataFrame(A) |> CSV.write(dir*"/A.txt", delim='\t', writeheader=false)
+DataFrame(B) |> CSV.write(dir*"/B.txt", delim='\t', writeheader=false)

@@ -71,6 +71,7 @@ for(ite in 1:maxite){
 	tmp_RSS <- sum((X-WZ)**2)
 	if(tmp_RSS < RSS){
 		RSS <- tmp_RSS
+		old_B[target] <- new_B[target]
 	}
 	else{
 		new_B[target] <- old_B[target]
